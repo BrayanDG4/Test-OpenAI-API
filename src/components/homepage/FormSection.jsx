@@ -18,20 +18,21 @@ export const FormSection = () => {
     e.preventDefault();
 
     // Realizar validaciones o acciones adicionales antes de enviar los datos
-    let Promp = `Como nutricionista profesional, su tarea es crear un plan de alimentación personalizado para una persona en función de su información personal. Por favor, diseñe un plan de desayuno, comida y cena para una persona de ${edad} años, ${estatura} metros de altura y ${peso} kilos de peso, con ${enfermedad}. El plan de alimentación debe adaptarse a las necesidades y preferencias dietéticas de la persona y, al mismo tiempo, tener en cuenta cualquier restricción o requisito relacionado con su condición médica.
+    let Promp = `Si tengo 22 años, peso 55 kg, mido 1.80 cm, sufro de hipertención, mi indice de masa corporal es 17.0 y soy hombre. Según los datos anteriores recomiendame un plan de alimentación con desayuno, almuerzo y cena respondeme con un array de json con los siguientes datos: (Cada plan de alimentacion que sea un json diferente).
 
-    Su respuesta debe incluir detalles específicos sobre cada comida, incluido el tamaño de las porciones, los ingredientes y los valores nutricionales. También debe proporcionar recomendaciones para refrigerios o comidas adicionales durante el día, según sea necesario. Además, explique por qué eligió ciertos alimentos o nutrientes en el plan y cómo beneficiarán la salud de la persona.
+    - Horario: (Escribe si es: Desayuno, almuerzo o cena)
+    - Titulo: (Aquí dame el titulo del plato)
+    - Ingredientes: (Dame los ingredientes de la comida)
+    - Calorias: (Dame las calorias aproximadas de este plato)
+    - Nota: (Una nota o recomendación respecto este plato)
     
-    Tenga en cuenta que su respuesta debe ser lo suficientemente flexible como para permitir varias opciones de comidas creativas y relevantes, manteniendo el enfoque en la precisión y satisfaciendo las necesidades dietéticas de la persona.
-    
-    dame esa información en una tabla con sus respectivas calorías
-    `;
+    Solo respondeme con los json, no me des mas informacion, limitate a eso, sin mas palabras.`
 
     peticion(Promp).then((res) => {
       setRespuesta(res);
     });
 
-    handleUserInfo(estatura, peso, edad, enfermedad, genero);
+    handleUserInfo(estatura, peso, edad, enfermedad, genero,respuesta);
     // Aquí puedes realizar acciones con los datos del formulario, como enviarlos a un servidor
 
     // Restablecer los valores del formulario después de enviarlos
@@ -194,6 +195,7 @@ export const FormSection = () => {
               </button>
             </div>
           </form>
+          <p>{respuesta}</p>
         </div>
       </div>
     </div>

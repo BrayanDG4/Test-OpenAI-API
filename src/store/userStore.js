@@ -8,16 +8,18 @@ export const useUserStore = create(
     edad: "",
     enfermedad: "",
     genero: "",
-    handleUserInfo: (estatura, peso, edad, enfermedad, genero) => {
+    respuesta:"",
+    handleUserInfo: (estatura, peso, edad, enfermedad, genero, respuesta) => {
       set({
         estatura: estatura,
         peso: peso,
         edad: edad,
         enfermedad: enfermedad,
-        genero: genero
+        genero: genero,
+        respuesta: respuesta,
       });
       
-      console.log(estatura, peso, edad, enfermedad, genero);
+      console.log("respuesta: ",respuesta);
     },
   }),
   shallow
