@@ -2,11 +2,10 @@ import { Configuration, OpenAIApi } from "openai";
 
 //Api key
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
-
 
 export const peticion = async (prompt) => {
 

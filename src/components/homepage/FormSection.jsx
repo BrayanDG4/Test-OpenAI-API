@@ -47,11 +47,11 @@ export const FormSection = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center md:w-2/5 bg-white overflow-y-scroll">
-      <div className="w-10/12 lg:h-screen mt-4">
+    <div className="w-full h-screen flex justify-center items-center md:w-2/5 bg-white overflow-hidden">
+      <div className="w-10/12 mt-4">
         <div className="text-center mb-4 tracking-wide">
           <h1 className="my-title-color text-3xl font-bold mb-2">NutriCoach</h1>
-          <h3 className="my-gray-text font-semibold text-xl">
+          <h3 className="my-gray-text font-semibold text-x">
             ¡Bienvenido al camino hacia una alimentación saludable y
             equilibrada!{" "}
           </h3>
@@ -136,9 +136,9 @@ export const FormSection = () => {
                 onChange={(e) => setEstatura(e.target.value)}
               />
 
-              <p className="invisible peer-invalid:visible text-red-600 text-sm mb-1">
+              {/* <p className="invisible peer-invalid:visible text-red-600 text-sm mb-1">
                 Error generado
-              </p>
+              </p> */}
             </div>
 
             <div className="mb-1">
@@ -162,9 +162,9 @@ export const FormSection = () => {
                 onChange={(e) => setPeso(e.target.value)}
               />
 
-              <p className="invisible peer-invalid:visible text-red-600 text-sm mb-1">
+              {/* <p className="invisible peer-invalid:visible text-red-600 text-sm mb-1">
                 Error generado
-              </p>
+              </p> */}
             </div>
 
             <div className="mb-1">
@@ -187,13 +187,13 @@ export const FormSection = () => {
                 onChange={(e) => setEdad(e.target.value)}
               />
 
-              <p className="invisible peer-invalid:visible text-red-600 text-sm mb-1">
+              {/* <p className="invisible peer-invalid:visible text-red-600 text-sm mb-1">
                 Error generado
-              </p>
+              </p> */}
             </div>
 
             <div>
-              <button className="button-1 w-full mb-4" type="submit">
+              <button className="button-1 w-full mb-4  mt-[2%]" type="submit">
                 COMENZAR
               </button>
             </div>

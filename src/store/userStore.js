@@ -20,8 +20,7 @@ export const useUserStore = create(
         respuesta: respuesta,
       });
 
-      const x = await JSON.parse(respuesta);
-      console.log(x)
+      console.log(respuesta);
 
     },
   }),
