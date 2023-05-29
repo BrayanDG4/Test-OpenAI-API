@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { shallow } from "zustand/shallow";
 
 export const useUserStore = create(
+  
   (set) => ({
     estatura: "",
     peso: "",
@@ -9,7 +10,7 @@ export const useUserStore = create(
     enfermedad: "",
     genero: "",
     respuesta:"",
-    handleUserInfo: (estatura, peso, edad, enfermedad, genero, respuesta) => {
+    handleUserInfo: async (estatura, peso, edad, enfermedad, genero, respuesta) => {
       set({
         estatura: estatura,
         peso: peso,
@@ -18,8 +19,10 @@ export const useUserStore = create(
         genero: genero,
         respuesta: respuesta,
       });
-      
-      console.log("respuesta: ",respuesta);
+
+      const x = await JSON.parse(respuesta);
+      console.log(x)
+
     },
   }),
   shallow

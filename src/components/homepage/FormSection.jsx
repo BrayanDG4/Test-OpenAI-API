@@ -17,8 +17,10 @@ export const FormSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    var imc = peso/(estatura*estatura);
+
     // Realizar validaciones o acciones adicionales antes de enviar los datos
-    let Promp = `Si tengo 22 años, peso 55 kg, mido 1.80 cm, sufro de hipertención, mi indice de masa corporal es 17.0 y soy hombre. Según los datos anteriores recomiendame un plan de alimentación con desayuno, almuerzo y cena respondeme con un array de json con los siguientes datos: (Cada plan de alimentacion que sea un json diferente).
+    let Promp = `Si tengo ${edad} años, peso ${peso} kg, mido ${estatura} cm, sufro de ${enfermedad}, mi indice de masa corporal es ${imc} y soy ${genero}. Según los datos anteriores recomiendame un plan de alimentación con desayuno, almuerzo y cena respondeme con un array de json con los siguientes datos: (Cada plan de alimentacion que sea un json diferente).
 
     - Horario: (Escribe si es: Desayuno, almuerzo o cena)
     - Titulo: (Aquí dame el titulo del plato)
@@ -30,17 +32,18 @@ export const FormSection = () => {
 
     peticion(Promp).then((res) => {
       setRespuesta(res);
+
     });
 
     handleUserInfo(estatura, peso, edad, enfermedad, genero,respuesta);
     // Aquí puedes realizar acciones con los datos del formulario, como enviarlos a un servidor
 
     // Restablecer los valores del formulario después de enviarlos
-    setGenero("");
-    setEstatura("");
-    setPeso("");
-    setEdad("");
-    setEnfermedad("");
+    // setGenero("");
+    // setEstatura("");
+    // setPeso("");
+    // setEdad("");
+    // setEnfermedad("");
   };
 
   return (

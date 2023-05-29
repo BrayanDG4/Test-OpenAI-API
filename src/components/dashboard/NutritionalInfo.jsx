@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { useUserStore } from "../../store/userStore.js";
 import { Card } from "../cards/Card.jsx";
 
 export const NutritionalInfo = () => {
-  const { genero, estatura, peso, edad, enfermedad,respuesta } = useUserStore();
+  const { genero, estatura, peso, edad, enfermedad, respuesta } =
+    useUserStore();
+
+  // const [first, setfirst] = useState("");
+
+  // // const x = JSON.parse(respuesta)
+  // setfirst(x);
   return (
     <section className="flex justify-center h-screen text-center">
       <div className="w-[96%]">
@@ -54,7 +61,7 @@ export const NutritionalInfo = () => {
 
         <div className="text-start">
           <p className="bg-[#dddddd] text-[#666666] p-2 rounded-md outline-none border">
-           {respuesta}
+            {respuesta}
           </p>
         </div>
       </div>
