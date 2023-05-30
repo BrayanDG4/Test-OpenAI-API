@@ -12,12 +12,12 @@ export const FormSection = () => {
   //texto final del promp
   const [respuesta, setRespuesta] = useState("");
 
-  const { handleUserInfo } = useUserStore();
+  const { handleUserInfo, handleResponse } = useUserStore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    var imc = peso/(estatura*estatura);
+    var imc = peso / (estatura * estatura);
 
     // Realizar validaciones o acciones adicionales antes de enviar los datos
     let Promp = `Si tengo ${edad} años, peso ${peso} kg, mido ${estatura} cm, sufro de ${enfermedad}, mi indice de masa corporal es ${imc} y soy ${genero}. Según los datos anteriores recomiendame un plan de alimentación con desayuno, almuerzo y cena respondeme con un array de json con los siguientes datos: (Cada plan de alimentacion que sea un json diferente).
@@ -28,14 +28,14 @@ export const FormSection = () => {
     - Calorias: (Dame las calorias aproximadas de este plato)
     - Nota: (Una nota o recomendación respecto este plato)
     
-    Solo respondeme con los json, no me des mas informacion, limitate a eso, sin mas palabras.`
+    Solo respondeme con los json, no me des mas informacion, limitate a eso, sin mas palabras.`;
 
-    peticion(Promp).then((res) => {
-      setRespuesta(res);
+    // peticion(Promp).then((res) => {
+    //   setRespuesta(res);
+    // });
 
-    });
-
-    handleUserInfo(estatura, peso, edad, enfermedad, genero,respuesta);
+    handleUserInfo(estatura, peso, edad, enfermedad, genero);
+    handleResponse(Promp);
     // Aquí puedes realizar acciones con los datos del formulario, como enviarlos a un servidor
 
     // Restablecer los valores del formulario después de enviarlos
@@ -83,7 +83,6 @@ export const FormSection = () => {
                 <option value="Masculino">Masculino</option>
                 <option value="Femenino">Femenino</option>
               </select>
-
             </div>
 
             <div className="mb-1">
@@ -112,7 +111,6 @@ export const FormSection = () => {
                 <option value="Colesterol">Colesterol</option>
                 <option value="No tengo">No tengo</option>
               </select>
-
             </div>
 
             <div className="mb-1">
