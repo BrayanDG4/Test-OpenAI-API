@@ -25,6 +25,8 @@ export const useUserStore = create(
       set({ respuesta: response});
       console.log("STORE: ",data);
       console.log(typeof(data));
+
+      // comentario fuck
       
     },
   }),
