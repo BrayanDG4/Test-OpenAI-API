@@ -2,12 +2,16 @@ import { useState } from "react";
 import { peticion } from "../../chat.js";
 import { useUserStore } from "../../store/userStore.js";
 
+import BeatLoader from "react-spinners/BeatLoader";
+
 export const FormSection = () => {
   const [genero, setGenero] = useState("");
   const [estatura, setEstatura] = useState("");
   const [peso, setPeso] = useState("");
   const [edad, setEdad] = useState("");
   const [enfermedad, setEnfermedad] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
 
   //texto final del promp
   const [respuesta, setRespuesta] = useState("");
@@ -17,25 +21,37 @@ export const FormSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     var imc = peso / (estatura * estatura);
 
     // Realizar validaciones o acciones adicionales antes de enviar los datos
-    let Promp = `Si tengo ${edad} años, peso ${peso} kg, mido ${estatura} cm, sufro de ${enfermedad}, mi indice de masa corporal es ${imc} y soy ${genero}. Según los datos anteriores recomiendame un plan de alimentación con desayuno, almuerzo y cena respondeme con un array de json con los siguientes datos: (Cada plan de alimentacion que sea un json diferente).
+    let Promp = `Quiero que me digas una recomendación totalmente personalisada con los siguientes datos. Si tengo ${edad} años, peso ${peso} kg, mido ${estatura} cm, sufro de ${enfermedad}, mi indice de masa corporal es ${imc} y soy ${genero}. Según los datos anteriores recomiendame un plan de alimentación con desayuno, almuerzo y cena respondeme con un array de json con los siguientes datos: (Cada plan de alimentacion que sea un json diferente).
 
     - Horario: (Escribe si es: Desayuno, almuerzo o cena)
     - Titulo: (Aquí dame el titulo del plato)
-    - Ingredientes: (Dame los ingredientes de la comida)
+    - Ingredientes: (Dame los ingredientes de la comida en forma de JSON, ejemplo: Ingrediente 1: "Descripcción del ingrediente")
     - Calorias: (Dame las calorias aproximadas de este plato)
-    - Nota: (Una nota o recomendación respecto este plato)
+    - Nota: (Una nota o recomendacion a cerca del plato o de como hacerlo, esta debe ser minimo de 3 renglones.)
+
+    Asegurate de que los ingredientes no se repitan, es decir, varia mucho con los ingredientes.
+
+    Cada vez trata de responder algo diferente.
     
     Solo respondeme con los json, no me des mas informacion, limitate a eso, sin mas palabras.`;
 
-    // peticion(Promp).then((res) => {
-    //   setRespuesta(res);
-    // });
+    peticion(Promp).then((res) => {
+      setRespuesta(res);
+    }).finally(() => {
+      setIsLoading(false);
+    });
 
     handleUserInfo(estatura, peso, edad, enfermedad, genero);
     handleResponse(Promp);
+
+    useEffect(() => {
+      setIsLoading(false);
+    }, [respuesta]);
     // Aquí puedes realizar acciones con los datos del formulario, como enviarlos a un servidor
 
     // Restablecer los valores del formulario después de enviarlos
@@ -191,12 +207,16 @@ export const FormSection = () => {
             </div>
 
             <div>
-              <button className="button-1 w-full mb-4  mt-[2%]" type="submit">
-                COMENZAR
+              <button className="button-1 w-full mb-4  mt-[2%]" type="submit" disabled={isLoading}>
+                {isLoading ? (
+                  <BeatLoader color="#ffffff" />
+                ) : (
+                  respuesta ? "DE NUEVO" : "COMENZAR"
+                )}
               </button>
             </div>
           </form>
-          <p>{respuesta}</p>
+          {/* <p>{respuesta}</p> */}
         </div>
       </div>
     </div>
