@@ -6,17 +6,19 @@ export const useUserStore = create(
   (set) => ({
     estatura: "",
     peso: "",
+    imc: "",
     edad: "",
     enfermedad: "",
     genero: "",
     respuesta: "",
-    handleUserInfo: async (estatura, peso, edad, enfermedad, genero) => {
+    handleUserInfo: async (estatura, peso, edad, enfermedad, genero, imc) => {
       set({
         estatura: estatura,
         peso: peso,
         edad: edad,
         enfermedad: enfermedad,
         genero: genero,
+        imc: imc,
       });
     },
     handleResponse: async (promp) => {
