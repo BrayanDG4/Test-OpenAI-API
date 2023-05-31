@@ -198,7 +198,7 @@ export const NutritionalInfo = () => {
                   </div>
                   <div className="w-[47%] text-start text-[#000] bg-white p-[3%] rounded-[20px]">
                     <div className="w-full">
-                      <Pies />
+                      <Pies calorias={item.Calorias}/>
                     </div>
                   </div>
                 </div>

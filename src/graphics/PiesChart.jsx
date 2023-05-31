@@ -4,8 +4,12 @@ import { useUserStore } from "../store/userStore.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export function Pies() {
-  const { peso, imc, edad, genero } = useUserStore();
+export function Pies(calorias) {
+  const { peso, imc, edad, genero} = useUserStore();
+
+  const caloriasTotales = calorias.calorias;
+
+  console.log(caloriasTotales);
 
   const percentGCT = (edad, genero, imc) => {
     let valorGenero;
@@ -17,7 +21,6 @@ export function Pies() {
     }
 
     const GCT = 1.2 * imc + 0.23 * edad - 10.8 * valorGenero - 5.4;
-    console.log(valorGenero);
     return parseFloat(GCT.toFixed(2));
   };
 
@@ -31,11 +34,11 @@ export function Pies() {
   const MLG = fatFreeDough(peso, GCT);
 
   const data = {
-    labels: ["Peso", "IMC", "GCT", "MLG"],
+    labels: ["Peso", "IMC", "GCT", "MLG", "Cls"],
     datasets: [
       {
         label: "# of Votes",
-        data: [peso, imc, GCT, MLG],
+        data: [peso, imc, GCT, MLG, caloriasTotales],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
