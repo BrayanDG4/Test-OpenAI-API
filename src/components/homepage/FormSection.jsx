@@ -26,13 +26,13 @@ export const FormSection = () => {
     const imc = peso / (estatura * estatura);
 
     // Realizar validaciones o acciones adicionales antes de enviar los datos
-    let Promp = `Quiero que me digas una recomendación totalmente personalisada con los siguientes datos. Si tengo ${edad} años, peso ${peso} kg, mido ${estatura} cm, sufro de ${enfermedad}, mi indice de masa corporal es ${imc} y soy ${genero}. Según los datos anteriores recomiendame un plan de alimentación con desayuno, almuerzo y cena respondeme con un array de json con los siguientes datos: (Cada plan de alimentacion que sea un json diferente).
+    let Promp = `Quiero que me digas una recomendación totalmente personalisada con los siguientes datos. Si tengo ${edad} años, peso ${peso} kg, mido ${estatura} cm, sufro de ${enfermedad}, mi indice de masa corporal es ${imc} y soy ${genero}. Según los datos anteriores recomiendame un plan de alimentación con 2 desayuno, 2 almuerzo y 2 cena. respondeme con un array de json con los siguientes datos: (Cada plan de alimentacion que sea un json diferente).
 
     - Horario: (Escribe si es: Desayuno, almuerzo o cena)
     - Titulo: (Aquí dame el titulo del plato)
     - Ingredientes: (Dame los ingredientes de la comida en forma de JSON, ejemplo: Ingrediente 1: "Descripcción del ingrediente")
     - Calorias: (Dame las calorias aproximadas de este plato, damelas como un valor)
-    - Nota: (Una nota o recomendacion a cerca del plato o de como hacerlo, esta debe ser minimo de 3 renglones.)
+    - Nota: (Una nota o recomendacion a cerca del plato o de como hacerlo. Esta debe ser minimo de 3 renglones.)
 
     Asegurate de que los ingredientes no se repitan, es decir, varia mucho con los ingredientes.
 
